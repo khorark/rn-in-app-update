@@ -37,6 +37,10 @@ class RnInAppUpdateModule(private var reactContext: ReactApplicationContext) :
     Toast.makeText(reactContext, "Start check update", Toast.LENGTH_SHORT).show()
 
     appUpdateInfoTask.addOnSuccessListener { appUpdateInfo: AppUpdateInfo ->
+      if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+        Toast.makeText(reactContext, "Update available", Toast.LENGTH_LONG).show()
+      }
+
       if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.clientVersionStalenessDays() != null && appUpdateInfo.clientVersionStalenessDays()!! > UPDATE_STALE_DAYS && appUpdateInfo.isUpdateTypeAllowed(
           AppUpdateType.IMMEDIATE
         )
