@@ -17,6 +17,6 @@ const RnInAppUpdate = NativeModules.RnInAppUpdate
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return RnInAppUpdate.multiply(a, b);
+export function checkUpdate(): void {
+  return RnInAppUpdate.checkUpdate();
 }
