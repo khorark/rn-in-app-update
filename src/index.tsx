@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { NativeModules, Platform } from 'react-native';
+import { appStoreInApp } from 'src/utils/appStoreInApp';
 
 const LINKING_ERROR =
   `The package 'rn-in-app-update' doesn't seem to be linked. Make sure: \n\n` +
@@ -18,5 +20,25 @@ const RnInAppUpdate = NativeModules.RnInAppUpdate
     );
 
 export function checkUpdate(): void {
-  return RnInAppUpdate.checkUpdate();
+  switch (Platform.OS) {
+    case 'android':
+      RnInAppUpdate.checkUpdate();
+      break;
+    case 'ios':
+      appStoreInApp.checkUpdate();
+      break;
+  }
 }
+
+export const useInAppUpdate = () => {
+  useEffect(() => {
+    switch (Platform.OS) {
+      case 'android':
+        RnInAppUpdate.checkUpdate();
+        break;
+      case 'ios':
+        appStoreInApp.checkUpdate();
+        break;
+    }
+  }, []);
+};
