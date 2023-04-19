@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { NativeModules, Platform } from 'react-native';
-import { appStoreInApp } from 'src/utils/appStoreInApp';
+import { appStoreInApp } from './utils/appStoreInApp';
 
 const LINKING_ERROR =
   `The package 'rn-in-app-update' doesn't seem to be linked. Make sure: \n\n` +
