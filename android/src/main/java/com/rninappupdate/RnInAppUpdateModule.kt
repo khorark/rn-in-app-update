@@ -48,6 +48,9 @@ class RnInAppUpdateModule(reactContext: ReactApplicationContext) :
     appUpdateManager = AppUpdateManagerFactory.create(reactContext)
     appUpdateManager!!.registerListener(this)
     val appUpdateInfoTask = appUpdateManager!!.appUpdateInfo
+
+    val toast = Toast.makeText(applicationContext, "Start check update", Toast.LENGTH_SHORT).show()
+
     appUpdateInfoTask.addOnSuccessListener { appUpdateInfo: AppUpdateInfo ->
       if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.clientVersionStalenessDays() != null && appUpdateInfo.clientVersionStalenessDays()!! > UPDATE_STALE_DAYS && appUpdateInfo.isUpdateTypeAllowed(
           AppUpdateType.IMMEDIATE
