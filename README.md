@@ -5,7 +5,7 @@ Package for in-app update your app
 ## Installation
 
 ```sh
-npm install rn-in-app-update --save
+npm install @khorark/rn-in-app-update --save
 cd ios && pod install
 ```
 
@@ -14,7 +14,7 @@ cd ios && pod install
 Use hook for check update
 
 ```js
-import { useInAppUpdate } from 'rn-in-app-update';
+import { useInAppUpdate } from '@khorark/rn-in-app-update';
 
 // ...
 
@@ -29,7 +29,7 @@ Use func for check update
 
 ```js
 // ...
-import { checkUpdate } from 'rn-in-app-update';
+import { checkUpdate } from '@khorark/rn-in-app-update';
 // ...
 
 const App = () => {

@@ -1,6 +1,6 @@
 {
-  "name": "rn-in-app-update",
-  "version": "1.0.0",
+  "name": "@khorark/rn-in-app-update",
+  "version": "1.0.1",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
