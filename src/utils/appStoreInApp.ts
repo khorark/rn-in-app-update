@@ -131,7 +131,6 @@ class AppStoreInAppImpl implements AppStoreInApp {
 
   public async checkUpdate() {
     const iTunesInfo = await this.getLatestData(DeviceInfo.getBundleId());
-    console.log('check update');
     if (iTunesInfo && iTunesInfo.version > DeviceInfo.getVersion()) {
       this.showUpgradePrompt({
         appId: iTunesInfo.trackId.toString(),

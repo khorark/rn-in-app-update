@@ -1,7 +1,6 @@
 package com.rninappupdate
 
 import android.content.IntentSender.SendIntentException
-import android.widget.Toast
 import com.facebook.react.bridge.LifecycleEventListener
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -34,13 +33,7 @@ class RnInAppUpdateModule(private var reactContext: ReactApplicationContext) :
     appUpdateManager!!.registerListener(this)
     val appUpdateInfoTask = appUpdateManager!!.appUpdateInfo
 
-    Toast.makeText(reactContext, "Start check update", Toast.LENGTH_SHORT).show()
-
     appUpdateInfoTask.addOnSuccessListener { appUpdateInfo: AppUpdateInfo ->
-      if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
-        Toast.makeText(reactContext, "Update available", Toast.LENGTH_LONG).show()
-      }
-
       if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.clientVersionStalenessDays() != null && appUpdateInfo.clientVersionStalenessDays()!! > UPDATE_STALE_DAYS && appUpdateInfo.isUpdateTypeAllowed(
           AppUpdateType.IMMEDIATE
         )

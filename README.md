@@ -5,17 +5,36 @@ Package for in-app update your app
 ## Installation
 
 ```sh
-npm install rn-in-app-update
+npm install rn-in-app-update --save
+cd ios && pod install
 ```
 
 ## Usage
 
+Use hook for check update
+
 ```js
-import { multiply } from 'rn-in-app-update';
+import { useInAppUpdate } from 'rn-in-app-update';
 
 // ...
 
-const result = await multiply(3, 7);
+const App = () => {
+  useInAppUpdate();
+
+  return <MainComponent />;
+};
+```
+
+Use func for check update
+
+```js
+// ...
+import { checkUpdate } from 'rn-in-app-update';
+// ...
+
+const App = () => {
+  return <Pressable onPress={checkUpdate}>/* ... */ </Pressable>;
+};
 ```
 
 ## Contributing
