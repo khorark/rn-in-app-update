@@ -2,10 +2,13 @@
 
 Package for in-app update your app
 
+## Description
+Android update use native SDK for in-app update.
 ## Installation
 
 ```sh
 npm install @khorark/rn-in-app-update --save
+
 cd ios && pod install
 ```
 
